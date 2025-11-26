@@ -1,0 +1,7 @@
+# utilizamos 2 scripts, una para crear la base de datos con sus tablas.
+
+# otro para incertar datos a esa base de datos
+
+# por el momento lo voy a realizar de manera grafica
+# luego debo trasladar ese conocimiento a la parte cli
+

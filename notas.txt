@@ -1,0 +1,45 @@
+# detener y eliminar los contenedores y sus datos
+docker-compose down -v
+
+# iniciar el contenedor por primera vez
+docker-compose up -d
+
+# encender contenedores que fueron creados y estan apagados
+docker-compose start
+
+# apagar los contenedores
+docker-compose stop
+
+# ingresar al mysql en el contenedor
+docker exec -it administrador-mysql mysql -u root -p
+
+# acceder paso a paso a mysql
+docker exec -it administrador-mysql bash
+mysql -u root -p
+
+
+--------------------------------------------------------
+
+# Entrar al contenedor
+docker exec -it administrador-mysql bash
+
+# Dentro del contenedor, ejecutar
+mysql -u root -p biblioteca < /ruta/al/archivo.sql
+
+---------------------------------------------------------
+
+# copiar el archivo a los datos del contenedor
+docker cp usuarios.sql administrador-mysql:/tmp/usuarios.sql
+
+# entrar al contenedor
+docker exec -it administrador-mysql bash
+
+#dentro del contenedor ejecutar el script
+mysql -u root -p biblioteca < /tmp/usuarios.sql
+
+----------------------------------------------------------
+
+
+# Crear una base de datos
+CREATE DATABASE nombre_db;
+

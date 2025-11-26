@@ -1,0 +1,50 @@
+
+# tabla usuarios
+CREATE TABLE `blogdb`.`usuarios` (
+  `UserID` INT NOT NULL AUTO_INCREMENT,
+  `Nombre` VARCHAR(45) NULL,
+  `Email` VARCHAR(45) NULL,
+  `FechaRegistro` DATE NULL,
+  PRIMARY KEY (`UserID`));
+
+
+# cambiarle el nombre a la tabla
+ALTER TABLE `blogdb`.`Usuarios` 
+RENAME TO  `blogdb`.`usuarios` ;
+
+
+# tabla publicaciones
+CREATE TABLE `blogdb`.`publicaciones` (
+  `PostID` INT NOT NULL AUTO_INCREMENT,
+  `Titulo` VARCHAR(45) NULL,
+  `Contenido` VARCHAR(45) NULL,
+  `FechaPublicacion` DATE NULL,
+  PRIMARY KEY (`PostID`));
+
+# tabla comentarios
+CREATE TABLE `blogdb`.`comentarios` (
+  `CommentID` INT NOT NULL AUTO_INCREMENT,
+  `PostID` VARCHAR(45) NULL,
+  `UserID` VARCHAR(45) NULL,
+  `Contenido` VARCHAR(45) NULL,
+  `FechaComentario` DATE NULL,
+  PRIMARY KEY (`CommentID`));
+
+
+# alterar la tabla comentarios
+ALTER TABLE `blogdb`.`comentarios` 
+CHANGE COLUMN `PostID` `PostID` INT NULL DEFAULT NULL ,
+CHANGE COLUMN `UserID` `UserID` INT NULL DEFAULT NULL ;
+
+
+# ahora hacer las referencias por medio de una clave foranea
+# esto para la tabla cometarios y publicaciones
+ALTER TABLE `blogdb`.`comentarios` 
+ADD INDEX `postid_idx` (`PostID` ASC) VISIBLE;
+;
+ALTER TABLE `blogdb`.`comentarios` 
+ADD CONSTRAINT `postid`
+  FOREIGN KEY (`PostID`)
+  REFERENCES `blogdb`.`publicaciones` (`PostID`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
