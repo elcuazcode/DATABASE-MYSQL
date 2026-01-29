@@ -1,20 +1,21 @@
 # detener y eliminar los contenedores y sus datos
-docker-compose down -v
+docker compose down -v
 
 # iniciar el contenedor por primera vez
-docker-compose up -d
+docker compose up -d
 
 # encender contenedores que fueron creados y estan apagados
-docker-compose start
+docker compose start
 
 # apagar los contenedores
-docker-compose stop
+docker compose stop
 
 # ingresar al mysql en el contenedor
 docker exec -it administrador-mysql mysql -u root -p
 
 # acceder paso a paso a mysql
 docker exec -it administrador-mysql bash
+
 mysql -u root -p
 
 
